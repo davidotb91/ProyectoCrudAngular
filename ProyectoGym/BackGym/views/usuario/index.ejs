@@ -1,0 +1,70 @@
+
+<div class="container">
+  <div ng-controller="angUsrController">
+    <hr>
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" ng-click="addItem()">Agregar</button>
+    <div></div>
+    <hr>
+
+    <div>
+      <label >Filtro</label>
+      <input type="text" ng-model="filtroNombreUsuario">
+
+    </div>
+    <hr>
+
+
+    <!--ESTOS SON LOS CONTENIDOS DE LA TABLA-->
+    <div class="row" ng-repeat="item in items | filter:{ nombre:filtroNombreUsuario }:false">
+      <div class="col-md-6">Nombre:</div>
+      <div class="col-md-6" ng-bind="item.nombre"></div>
+      <div class="col-md-6">Sexo:</div>
+      <div class="col-md-6" ng-bind="item.sexo"></div>
+      <div class="col-md-6">Email:</div>
+      <div class="col-md-6" ng-bind="item.email"></div>
+      <div class="col-md-6">Edad:</div>
+      <div class="col-md-6" ng-bind="item.edad"></div>
+      <div class="col-md-6">CI:</div>
+      <div class="col-md-6" ng-bind="item.ci"></div>
+      <div class="col-md-6">Somatotipo:</div>
+      <div class="col-md-6" ng-bind="item.somatotipo"></div>
+      <div class="col-md-6">Universidad:</div>
+      <div class="col-md-6" ng-bind="item.universidad"></div>
+      <div class="col-md-6">Pais:</div>
+      <div class="col-md-6" ng-bind="item.pais"></div>
+      <div class="col-md-6">Ciudad:</div>
+      <div class="col-md-6" ng-bind="item.ciudad"></div>
+      <hr>
+      <div class="col-md-3">
+        <button class="btn btn-primary" data-toggle="modal" data-target="#myModal" ng-click="editItem(item)">Editar</button>
+        <button class="btn" ng-click="removeItem(item)">Remover</button></div>
+      <hr>
+    </div>
+
+
+    <!-- Modal PARA CREAR UN NUEVO -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" ng-show="displayForm">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-body">
+            <div class="form-group"><input type="text" ng-model="usuario.nombre"  class="form-control" placeholder="nombre"/></div>
+            <div class="form-group"> <input type="text" ng-model="usuario.sexo"  class="form-control" placeholder="sexo"/></div>
+            <div class="form-group"> <input type="text" ng-model="usuario.email"  class="form-control" placeholder="email"/></div>
+            <div class="form-group"> <input type="text" ng-model="usuario.edad"  class="form-control" placeholder="edad"/></div>
+            <div class="form-group"> <input type="text" ng-model="usuario.ci"  class="form-control" placeholder="ci"/></div>
+            <div class="form-group"> <input type="text" ng-model="usuario.somatotipo"  class="form-control" placeholder="somatotipo"/></div>
+            <div class="form-group"> <input type="text" ng-model="usuario.universidad"  class="form-control" placeholder="universidad"/></div>
+            <div class="form-group"> <input type="text" ng-model="usuario.pais"  class="form-control" placeholder="pais"/></div>
+            <div class="form-group"> <input type="text" ng-model="usuario.ciudad"  class="form-control" placeholder="ciudad"/></div>
+
+          </div>
+          <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="saveItem()">Guardar</button>
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
